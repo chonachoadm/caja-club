@@ -11,7 +11,7 @@ export default {
         }
     },
     mounted() {
-        const products = localStorage.getItem('productos');
+        const products = localStorage.getItem('products');
         if (products) {
             this.items = JSON.parse(products);
         }
@@ -20,7 +20,7 @@ export default {
         addProduct() {
             if (!this.product.trim() || this.price == 0) return;
             this.items.push({ product: this.product.trim(), price: this.price });
-            localStorage.setItem('productos', JSON.stringify(this.items));
+            localStorage.setItem('products', JSON.stringify(this.items));
 
             if (this.timer) {
                 clearTimeout(this.timer);
@@ -34,12 +34,12 @@ export default {
             this.price = '';
         },
         clearStorage() {
-            localStorage.removeItem('productos');
+            localStorage.removeItem('products');
             this.items = [];
         },
         removeProduct(index) {
             this.items.splice(index, 1);
-            localStorage.setItem('productos', JSON.stringify(this.items));
+            localStorage.setItem('products', JSON.stringify(this.items));
         }
     }
 }

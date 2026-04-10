@@ -3,6 +3,8 @@ export default {
     name: 'AppSpread',
     data() {
         return {
+            totalProducts: [],
+            productCount: {},
             paidWithCash: [],
             paidWithMercado: [],
             totalCash: 0,
@@ -10,6 +12,10 @@ export default {
         }
     },
     mounted() {
+        const totalProducts = localStorage.getItem('products');
+        if (totalProducts) {
+            this.totalProducts = JSON.parse(totalProducts);
+        };
         const cashProducts = localStorage.getItem('cash');
         if (cashProducts) {
             this.paidWithCash = JSON.parse(cashProducts);
@@ -24,6 +30,23 @@ export default {
         for (const item of this.paidWithMercado) {
             this.totalMercado += item.price
         };
+
+        const allSales = [
+            ...this.paidWithCash,
+            ...this.paidWithMercado
+        ];
+
+        this.productCount = {};
+
+        for (const product of allSales) {
+            const key = product.product;
+            if (this.productCount[key]) {
+                this.productCount[key]++;
+            } else {
+                this.productCount[key] = 1;
+            }
+        }
+        console.log(this.productCount);
     },
     methods: {
         clearSpread() {
@@ -47,12 +70,18 @@ export default {
                     Ventas del día
                 </h1>
             </div>
+            <div class="d-flex justify-content-around align-items-center flex-wrap">
+                <div v-for="(amount, product) in this.productCount" :key="product" class="d-flex flex-column align-items-center all-sales-box">
+                    <h4>{{ product }}</h4>
+                    <p>{{ amount }}</p>
+                </div>
+            </div>
             <div v-if="totalCash !== 0" class="my-4">
                 <h2>
                     Efectivo:
                 </h2>
                 <ul class="list-unstyled m-0">
-                    <li v-for="(item, index) in paidWithCash" :key="index" class="mx-4 d-flex justify-content-between">
+                    <li v-for="(item, index) in paidWithCash" :key="index" class="mx-4 d-flex justify-content-between spread-list-item">
                         <p class="my-2">
                             {{ item.product }}
                         </p>
@@ -69,7 +98,7 @@ export default {
                 </h2>
                 <ul class="list-unstyled m-0">
                     <li v-for="(item, index) in paidWithMercado" :key="index"
-                        class="mx-4 d-flex justify-content-between">
+                        class="mx-4 d-flex justify-content-between spread-list-item">
                         <p class="my-2">
                             {{ item.product }}
                         </p>
@@ -122,7 +151,10 @@ export default {
     text-align: center;
 }
 
-li:not(:last-child) {
+.spread-list-item:not(:last-child) {
     border-bottom: 1px solid rgb(181, 181, 181);
+}
+.all-sales-box {
+    width: 100px;
 }
 </style>
