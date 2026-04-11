@@ -126,7 +126,7 @@ export default {
                                 <div class="modal-body">
                                     <ul class="list-unstyled">
                                         <li v-for="(orderItem, index) in order" :key="index">
-                                            <div class="w-25 d-flex justify-content-between align-items-center">
+                                            <div class="w-50 w-md-25 d-flex justify-content-between align-items-center">
                                                 <p class="m-0">
                                                     {{ orderItem.product }}
                                                 </p>

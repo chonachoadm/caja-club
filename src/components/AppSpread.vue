@@ -56,6 +56,8 @@ export default {
             this.paidWithMercado = [];
             this.totalCash = 0;
             this.totalMercado = 0;
+            this.totalProducts = [];
+            this.productCount = {};
         }
     }
 }
@@ -70,8 +72,8 @@ export default {
                     Ventas del día
                 </h1>
             </div>
-            <div class="d-flex justify-content-around align-items-center flex-wrap">
-                <div v-for="(amount, product) in this.productCount" :key="product" class="d-flex flex-column align-items-center all-sales-box">
+            <div v-if="totalProducts" class="d-flex justify-content-around align-items-center flex-wrap">
+                <div v-for="(amount, product) in productCount" :key="product" class="d-flex flex-column align-items-center all-sales-box">
                     <h4>{{ product }}</h4>
                     <p>{{ amount }}</p>
                 </div>
