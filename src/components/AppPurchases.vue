@@ -52,9 +52,9 @@ export default {
         },
         withMercado() {
             for (const item of this.order) {
-                this.paidWithCash.push({ product: item.product, price: item.price });
+                this.paidWithMercado.push({ product: item.product, price: item.price });
             }
-            localStorage.setItem('mercadoPago', JSON.stringify(this.paidWithCash));
+            localStorage.setItem('mercadoPago', JSON.stringify(this.paidWithMercado));
             if (this.timer) {
                 clearTimeout(this.timer);
             }
