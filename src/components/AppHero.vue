@@ -46,8 +46,11 @@ export default {
 </script>
 
 <template>
-    <section class="row m-2 my-4 py-5 m-md-4  py-md-5 position-relative">
+    <section class="row m-2 my-4 py-5 pt-2 m-md-4  py-md-5 position-relative">
         <div class="col-12">
+            <div class="row justify-content-center mb-4">
+                <img src="@/assets/img/icon-club.svg" alt="El Club de la Mortal" class="img img-fluid col-8 col-md-3" />
+            </div>
             <div class="row justify-content-around gap-5 mb-5 pb-5">
                 <form @submit.prevent="addProduct" class="col-12 col-md-6 d-flex flex-column align-items-center">
                     <div class="w-100 w-md-50 d-flex flex-column mb-4">
