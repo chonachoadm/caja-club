@@ -72,7 +72,7 @@ export default {
                     Ventas del día
                 </h1>
             </div>
-            <div v-if="totalProducts" class="d-flex justify-content-around align-items-center flex-wrap">
+            <div v-if="totalProducts" class=" d-flex justify-content-around align-items-center flex-wrap">
                 <div v-for="(amount, product) in productCount" :key="product" class="d-flex flex-column align-items-center all-sales-box">
                     <h4>{{ product }}</h4>
                     <p>{{ amount }}</p>
@@ -157,6 +157,6 @@ export default {
     border-bottom: 1px solid rgb(181, 181, 181);
 }
 .all-sales-box {
-    width: 100px;
+    min-width: 150px;
 }
 </style>
