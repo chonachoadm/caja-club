@@ -36,8 +36,9 @@ export default {
             this.order.splice(index, 1);
         },
         withCash() {
+            const time = new Date().toISOString();
             for (const item of this.order) {
-                this.paidWithCash.push({ product: item.product, price: item.price });
+                this.paidWithCash.push({ product: item.product, price: item.price, time });
             }
             localStorage.setItem('cash', JSON.stringify(this.paidWithCash));
             if (this.timer) {
@@ -51,8 +52,9 @@ export default {
             this.orderTotal = 0;
         },
         withMercado() {
+            const time = new Date().toISOString();
             for (const item of this.order) {
-                this.paidWithMercado.push({ product: item.product, price: item.price });
+                this.paidWithMercado.push({ product: item.product, price: item.price, time });
             }
             localStorage.setItem('mercadoPago', JSON.stringify(this.paidWithMercado));
             if (this.timer) {

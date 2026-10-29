@@ -165,6 +165,26 @@ describe('AppSpread.vue', () => {
         });
     });
 
+    describe('formatDateTime()', () => {
+        it('should format a stored timestamp for display', () => {
+            wrapper = mount(AppSpread, {
+                global: {
+                    stubs: {
+                        RouterLink: true,
+                    },
+                },
+            });
+
+            const timestamp = '2026-10-29T12:15:00.000Z';
+            const expected = new Intl.DateTimeFormat('es-AR', {
+                dateStyle: 'medium',
+                timeStyle: 'short',
+            }).format(new Date(timestamp));
+
+            expect(wrapper.vm.formatDateTime(timestamp)).toBe(expected);
+        });
+    });
+
     describe('clearSpread()', () => {
         it('should remove cash from localStorage', () => {
             const cashData = [
