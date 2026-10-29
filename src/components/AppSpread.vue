@@ -115,7 +115,7 @@ export default {
                     <p>{{ amount }}</p>
                 </div>
             </div>
-            <div v-if="totalCash !== 0" class="my-4 col-8 mx-auto">
+            <div v-if="totalCash !== 0" class="my-4 col-12 col-md-8 mx-auto">
                 <h2>
                     Efectivo:
                 </h2>
@@ -135,7 +135,7 @@ export default {
                 </ul>
                 <p class="my-4 total-amount">Total: <strong>$ {{ totalCash }}</strong> en efectivo</p>
             </div>
-            <div v-if="totalMercado !== 0" class="my-4 col-8 mx-auto">
+            <div v-if="totalMercado !== 0" class="my-4 col-12 col-md-8 mx-auto">
                 <h2>
                     MercadoPago:
                 </h2>
@@ -155,13 +155,13 @@ export default {
                 </ul>
                 <p class="my-4 total-amount">Total: <strong>$ {{ totalMercado }}</strong> con MercadoPago</p>
             </div>
-            <div class="col-6 mx-auto my-4">
+            <div class="col-12 col-md-6 mx-auto my-4">
                 <div class="row justify-content-around">
-                    <button type="button" class="col-4 send-via-wpp" data-bs-toggle="modal"
+                    <button type="button" class="col-10 col-sm-4 mb-4 send-via-wpp" data-bs-toggle="modal"
                         data-bs-target="#ShareSalesModal">
                         Compartir
                     </button>
-                    <button type="button" class="col-4 delete-all-button" data-bs-toggle="modal"
+                    <button type="button" class="col-10 col-sm-4 mb-4 clear-spread" data-bs-toggle="modal"
                         data-bs-target="#DeleteAllModal">
                         Vaciar detallado
                     </button>
